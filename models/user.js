@@ -5,6 +5,14 @@ const foodSchema = new mongoose.Schema({
     type: String, 
     required: true,
   },
+  ingredients: String, 
+  recipeLink: String, 
+  notes: String,
+  isVegan: Boolean,
+  status: {
+    type: String, 
+    enum: ['lovedIt', 'hatedIt', 'neutral', 'haveYetToTry']
+  }
 });
 
 const userSchema = mongoose.Schema({

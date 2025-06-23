@@ -6,6 +6,33 @@
     <title>Add Item</title>
 </head>
 <body>
-    <h1>Add new item!</h1>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Add a new Dish!</h1>
+    <form action="/users/:userId/foods" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+
+        <label for="ingredients">Ingredients:</label>
+        <input type="text" name="ingredients" id="ingredients">
+
+        <label for="recipeLink">Recipe Link:</label>
+        <input type="text" name="recipeLink" id="recipeLink">
+
+        <label for="notes">Notes:</label>
+        <textarea type="text" name="notes" id="notes"></textarea>
+
+        <label for="isVegan">Safe for Vegans?:</label>
+        <input type="checkbox" name="isVegan" id="isVegan">
+
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+            <option value="lovedIt">Loved it!</option>
+            <option value="hatedIt">Hated it!</option>
+            <option value="neutral">Meh</option>
+            <option value="haveYetToTry">Haven't tried it yet</option>
+        </select>
+
+        <button type="submit">Add Food Dish</button>
+    </form>
 </body>
 </html>
