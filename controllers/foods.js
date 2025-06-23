@@ -16,8 +16,17 @@ Delete	‘/users/:userId/foods/:itemId’	DELETE
 // All routes below are mounted on /users/:userId/foods
 
 // INDEX
-router.get('/', (req, res) => {
-    res.render('foods/index.ejs');
+router.get('/', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+    
+        res.render('foods/index.ejs', {
+            foods: currentUser.pantry,
+        });
+    } catch (error) {
+        console.log(error);
+        res.redirect('/');
+    }
 });
 
 // NEW
@@ -25,6 +34,8 @@ router.get('/new', (req, res) => {
     res.render('foods/new.ejs');
 })
 
+// CREATE
+router.post('/', )
 
 
 module.exports = router;
