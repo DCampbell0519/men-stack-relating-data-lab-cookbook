@@ -35,6 +35,19 @@ router.get('/new', (req, res) => {
     res.render('foods/new.ejs');
 })
 
+// DELETE
+router.delete('/:itemId', async (req, res) => {
+    try {
+        const currentUser = await User.findById(req.session.user._id);
+        const currentFood = currentUser.pantry.id(req.params.itemId).deleteOne();
+        await currentUser.save()
+        res.redirect(`/users/${currentUser._id}/foods`)
+    } catch (error) {
+        console.log(error)
+        res.redirect('/')
+    }
+})
+
 // CREATE
 router.post('/', async (req, res) => {
     console.log(req.body)
@@ -55,16 +68,6 @@ router.post('/', async (req, res) => {
     }
 })
 
-// DELETE
-// router.delete('/:itemId', async (req, res) => {
-//     try {
-//         const currentUser = await User.findById(req.session.user._id)
-//         const currentFood = currentUser.pantry.id(req.params.itemId).delete
-//     } catch (error) {
-//         console.log(error)
-//         res.redirect('/')
-//     }
-// })
 
 // SHOW
 router.get('/:itemId', async (req, res) => {

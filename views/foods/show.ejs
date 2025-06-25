@@ -23,5 +23,9 @@
             <li>Did I like it?: You haven't tried it yet!</li>
         <% } %>
     </ul>
+
+    <form action="/users/<%= user._id %>/foods/<%= foods._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete this Recipe</button>
+    </form>
 </body>
 </html>
