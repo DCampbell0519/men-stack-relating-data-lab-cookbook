@@ -22,6 +22,7 @@ router.get('/', async (req, res) => {
     
         res.render('foods/index.ejs', {
             foods: currentUser.pantry,
+            user: currentUser,
         });
     } catch (error) {
         console.log(error);
@@ -35,7 +36,24 @@ router.get('/new', (req, res) => {
 })
 
 // CREATE
-router.post('/', )
+router.post('/', async (req, res) => {
+    console.log(req.body)
+    if (req.body.isVegan === "on") {
+        req.body.isVegan = true;
+    } else {
+        req.body.isVegan = false;
+    }
+
+    try {
+        const currentUser = await User.findById(req.session.user._id)
+        currentUser.pantry.push(req.body)
+        await currentUser.save()
+        res.redirect(`/users/${currentUser._id}/foods`)
+    } catch (error) {
+        console.log(error)
+        res.redirect('/')
+    }
+})
 
 
 module.exports = router;
