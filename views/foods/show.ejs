@@ -12,7 +12,7 @@
         <li>Ingredients: <%= foods.ingredients %></li>
         <li>Notes: <%= foods.notes %></li>
         <li>Safe for Vegans?: <%= foods.isVegan %></li>
-        <li><a href="<%= foods.recipeLink %>">Link to Recipe</a></li>
+        <li><a href="<%= foods.recipeLink %>" target="_blank">Link to Recipe</a></li>
         <% if (foods.status === 'lovedIt') {  %>
             <li>Did I like it?: You loved it!</li>
         <% } else if (foods.status === 'hatedIt') { %>
