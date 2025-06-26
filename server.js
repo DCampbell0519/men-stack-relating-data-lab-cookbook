@@ -13,7 +13,7 @@ const authController = require('./controllers/auth.js');
 const foodsController = require('./controllers/foods.js');
 const usersController = require('./controllers/users.js');
 
-const port = process.env.PORT ? process.env.PORT : '3000';
+const port = process.env.PORT ? process.env.PORT : '3500';
 
 mongoose.connect(process.env.MONGODB_URI);
 

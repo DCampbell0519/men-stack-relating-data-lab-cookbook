@@ -23,3 +23,8 @@ Show	‘/users/:userId/foods/:itemId’	GET
 Edit	‘/users/:userId/foods/:itemId/edit’	GET
 Update	‘/users/:userId/foods/:itemId’	PUT
 Delete	‘/users/:userId/foods/:itemId’	DELETE
+
+
+Single show page that shows public items and private items
+Private mode should show a delete and edit mode
+Public mode should be read-only

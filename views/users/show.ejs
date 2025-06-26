@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Page</title>
+    <title>User Pantry</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Community Page</h1>
+    <h1>View <%= users.username %>'s Pantry!</h1>
     <ul>
-        <% users.forEach(user => {  %>
-            <a href="/communityPage/<%= user._id %>">
-                <li><%= user.username %></li>
+        <% pantry.forEach(item => {  %>
+            <a href="/communityPage/<%= users._id %>/<%= item._id %>">
+                <li><%= item.name %></li>
             </a>
-        <%  }) %>
+       <%  }) %>
     </ul>
 </body>
 </html>
